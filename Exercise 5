@@ -1,0 +1,11 @@
+public class Rectangle {
+    double l, w;
+    Rectangle(double l, double w){ this.l=l; this.w=w; }
+    double area(){ return l*w; }
+}
+
+class Exercise5_Rectangle {
+    public static void main(String[] args){
+        System.out.println(new Rectangle(4,5).area());
+    }
+}
