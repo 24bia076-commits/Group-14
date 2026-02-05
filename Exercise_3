@@ -1,0 +1,147 @@
+/**
+ * Write a description of class Exercise3_Product here.
+ *
+ * @author (Group 14)
+ * @version (5/2/2026)
+ */
+public class Exercise3_Product{
+    private String productCode;
+    private String productName;
+    private String category;
+    private double unitPrice;
+    private int quantityInStock;
+    private int reorderLevel;
+
+    public Exercise3_Product() {
+        reorderLevel = 10;
+    }
+
+    public Exercise3_Product(String code, String name, String category,
+                             double price, int quantity) {
+        this.productCode = code;
+        this.productName = name;
+        this.category = category;
+
+        if (price > 0) {
+            this.unitPrice = price;
+        }
+
+        if (quantity >= 0) {
+            this.quantityInStock = quantity;
+        }
+
+        this.reorderLevel = 10;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+
+    public int getReorderLevel() {
+        return reorderLevel;
+    }
+
+    public void setUnitPrice(double price) {
+        if (price > 0) {
+            unitPrice = price;
+        }
+    }
+
+    public void setQuantityInStock(int quantity) {
+        if (quantity >= 0) {
+            quantityInStock = quantity;
+        }
+    }
+
+    public void setReorderLevel(int level) {
+        if (level > 0) {
+            reorderLevel = level;
+        }
+    }
+
+    public void addStock(int quantity) {
+        if (quantity > 0) {
+            quantityInStock += quantity;
+        }
+    }
+
+    public boolean sellProduct(int quantity) {
+        if (quantity > 0 && quantity <= quantityInStock) {
+            quantityInStock -= quantity;
+            return true;
+        }
+        return false;
+    }
+    
+    public double calculateStockValue() {
+        return unitPrice * quantityInStock;
+    }
+
+    public boolean needsReorder() {
+        return quantityInStock <= reorderLevel;
+    }
+
+    public void applyDiscount(double percentage) {
+        if (percentage > 0) {
+            unitPrice = unitPrice - (unitPrice * percentage / 100);
+        }
+    }
+    
+    public void displayProductInfo() {
+        System.out.println("Code: " + productCode);
+        System.out.println("Name: " + productName);
+        System.out.println("Category: " + category);
+        System.out.println("Price: " + unitPrice);
+        System.out.println("Stock: " + quantityInStock);
+        System.out.println("Reorder Level: " + reorderLevel);
+        System.out.println("------------------------");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("=== Product Inventory Exercise ===\n");
+
+        
+        Exercise3_Product product1 =
+                new Exercise3_Product("PRD001", "Laptop", "Electronics", 1500000, 25);
+
+        Exercise3_Product product2 =
+                new Exercise3_Product("PRD002", "Office Chair", "Furniture", 350000, 8);
+
+        Exercise3_Product product3 =
+                new Exercise3_Product("PRD003", "Notebook", "Stationery", 5000, 100);
+
+        product1.displayProductInfo();
+        product2.displayProductInfo();
+        product3.displayProductInfo();
+
+        product1.sellProduct(20);
+       
+        System.out.println("Product2 needs reorder: " + product2.needsReorder());
+
+        product2.addStock(50);
+        product3.applyDiscount(15);
+
+        System.out.println("\nFinal Stock Values:");
+        System.out.println("Laptop value: " + product1.calculateStockValue());
+        System.out.println("Office Chair value: " + product2.calculateStockValue());
+        System.out.println("Notebook value: " + product3.calculateStockValue());
+
+        System.out.println("\n=== Exercise Complete ===");
+    }
+}
