@@ -5,12 +5,13 @@
  * @version (5/2/2026)
  */
 public class MobilePhone{
+//Attribute
     private String brand;
     private String model;
     private double price;
     private int batteryLevel;
     private boolean isOn;
-    
+//default Constructor    
     public MobilePhone(){
         this.brand="unknown";
         this.model="unknown";
@@ -18,7 +19,7 @@ public class MobilePhone{
         this.batteryLevel=100;
         this.isOn=false;
     }
-    
+ //perimeterized constructor   
     public MobilePhone(String brand, String model, double price){
         this.brand=brand;
         this.model=model;
