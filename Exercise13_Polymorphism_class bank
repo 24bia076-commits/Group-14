@@ -1,0 +1,23 @@
+class BankAccount{
+    protected String accountNumber;
+    protected double balance;
+
+    BankAccount(String accountNumber,double balance){
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    void deposit(double amount){
+        balance = balance + amount;
+    }
+
+    void withdraw(double amount){
+        if(amount <= balance){
+            balance = balance - amount;
+        }
+    }
+
+    double calculateInterest(){
+        return 0;
+    }
+}
