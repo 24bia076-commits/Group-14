@@ -1,0 +1,29 @@
+class FixedDepositAccount extends BankAccount{
+    double interestRate;
+
+    FixedDepositAccount(String accountNumber,double balance,double interestRate){
+        super(accountNumber,balance);
+        this.interestRate = interestRate;
+    }
+
+    double calculateInterest(){
+        return balance * interestRate;
+    }
+
+    void withdraw(double amount){
+        System.out.println("Withdrawal not allowed before maturity");
+    }
+}
+
+public class Exercise13_Polymorphism{
+
+    static void transferMoney(BankAccount fromAccount,BankAccount toAccount,double amount){
+        fromAccount.withdraw(amount);
+        toAccount.deposit(amount);
+    }
+
+    static void transferMoney(BankAccount fromAccount,BankAccount toAccount,double amount,String message){
+        System.out.println(message);
+        transferMoney(fromAccount,toAccount,amount);
+    }
+}
