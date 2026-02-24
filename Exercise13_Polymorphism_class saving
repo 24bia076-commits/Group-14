@@ -1,0 +1,12 @@
+class SavingsAccount extends BankAccount{
+    double interestRate;
+
+    SavingsAccount(String accountNumber,double balance,double interestRate){
+        super(accountNumber,balance);
+        this.interestRate = interestRate;
+    }
+
+    double calculateInterest(){
+        return balance * interestRate;
+    }
+}
