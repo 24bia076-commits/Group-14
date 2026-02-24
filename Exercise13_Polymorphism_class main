@@ -1,0 +1,16 @@
+public static void main(String[] args){
+
+        BankAccount savings = new SavingsAccount("S1",500000,0.05);
+        BankAccount current = new CurrentAccount("C1",1000000,500000);
+        BankAccount fixed = new FixedDepositAccount("F1",2000000,0.08);
+
+        savings.deposit(100000);
+        current.withdraw(1200000);
+
+        System.out.println("Savings interest: "+savings.calculateInterest());
+        System.out.println("Current interest: "+current.calculateInterest());
+        System.out.println("Fixed interest: "+fixed.calculateInterest());
+
+        transferMoney(savings,current,50000,"Transfer done");
+    }
+}
